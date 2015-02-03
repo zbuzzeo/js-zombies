@@ -127,7 +127,7 @@ The Food class will extend the Item class prototype
 ### getPack()
 *Player accesses his pack*
 
-Returns private variable `pack` in `string` form.
+Returns private variable `pack` in `Array` form.
 
 ---
 
