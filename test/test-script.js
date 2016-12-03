@@ -31,11 +31,8 @@ describe('Weapon', function() {
     expect(dagger instanceof Item).to.be.true;
   });
 
-  it('should call Item\'s constructor', function() {
-    sandbox.stub(window.Item, "call");
-
-    var dagger = new Weapon("Dagger", 10);
-    sinon.assert.calledWithExactly(Item.call, dagger, 'Dagger');
+  it('should extend from Item', function() {
+    expect(Weapon.prototype instanceof Item);
   });
 
   it('should have a name', function() {
@@ -59,11 +56,8 @@ describe('Food', function() {
     expect(apple instanceof Item).to.be.true;
   });
 
-  it('should call Item\'s constructor', function() {
-    sandbox.stub(window.Item, "call");
-
-    var apple = new Food("Apple", 25);
-    sinon.assert.calledWithExactly(Item.call, apple, 'Apple');
+  it('should extend from Item', function() {
+    expect(Food.prototype instanceof Item).to.be.true;
   });
 
   it('should have a name', function() {
@@ -434,11 +428,8 @@ describe('FastZombie', function() {
     expect(charger instanceof Zombie).to.be.true;
   });
 
-  it('should call Zombie\'s constructor', function() {
-    sandbox.stub(window.Zombie, "call");
-
-    var charger = new FastZombie(30, 10, 25);
-    sinon.assert.calledWithExactly(Zombie.call, charger, 30, 10, 25);
+  it('should extend from Zombie', function() {
+    expect(FastZombie.prototype instanceof Zombie).to.be.true;
   });
 
   it('should have health', function() {
@@ -477,11 +468,8 @@ describe('StrongZombie', function() {
     expect(tank instanceof Zombie).to.be.true;
   });
 
-  it('should call Zombie\'s constructor', function() {
-    sandbox.stub(window.Zombie, "call");
-
-    var tank = new StrongZombie(30, 30, 5);
-    sinon.assert.calledWithExactly(Zombie.call, tank, 30, 30, 5);
+  it('should extend from Zombie', function() {
+    expect(StrongZombie.prototype instanceof Zombie).to.be.true;
   });
 
   it('should have health', function() {
@@ -520,11 +508,8 @@ describe('RangedZombie', function() {
     expect(spitter instanceof Zombie).to.be.true;
   });
 
-  it('should call Zombie\'s constructor', function() {
-    sandbox.stub(window.Zombie, "call");
-
-    var spitter = new RangedZombie(30, 15, 15);
-    sinon.assert.calledWithExactly(Zombie.call, spitter, 30, 15, 15);
+  it('should extend from Zombie', function() {
+    expect(RangedZombie.prototype instanceof Zombie).to.be.true;
   });
 
   it('should have health', function() {
@@ -563,11 +548,8 @@ describe('ExplodingZombie', function() {
     expect(boomer instanceof Zombie).to.be.true;
   });
 
-  it('should call Zombie\'s constructor', function() {
-    sandbox.stub(window.Zombie, "call");
-
-    var boomer = new ExplodingZombie(30, 20, 10);
-    sinon.assert.calledWithExactly(Zombie.call, boomer, 30, 20, 10);
+  it('should extend from Zombie', function() {
+    expect(ExplodingZombie.prototype instanceof Zombie).to.be.true;
   });
 
   it('should have health', function() {
