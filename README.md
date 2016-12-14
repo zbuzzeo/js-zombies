@@ -41,7 +41,7 @@ while passing in the 1 `Item` constructor param
 `damage`: number
 
 #### Weapon Extends Item Class
-The Weapon class will extend the Item class prototype
+The Weapon class will extend the Item class.
 
 ----
 
@@ -61,7 +61,7 @@ while passing in the 1 Item constructor param
 `energy`: number
 
 #### Food Extends Item Class
-The Food class will extend the Item class prototype
+The Food class will extend the Item class.
 
 ----
 
@@ -232,8 +232,7 @@ You should be able to invoke this function on a Player instance.
 ## FastZombie(health, strength, speed)
 *Creates a fast zombie.*
 
-Use the `call` method on the Zombie constructor.
-Set FastZombie's prototype to a new instance of Zombie.
+The FastZombie class will extend the Zombie class.
 
 **Parameters**
 `health`: number, The zombie's health.
@@ -241,15 +240,14 @@ Set FastZombie's prototype to a new instance of Zombie.
 `speed`: number, The zombie's speed.
 
 #### FastZombie Extends Zombie Class
-The FastZombie class will extend the Zombie class prototype
+The FastZombie class will extend the Zombie class.
 
 ----
 
 ## StrongZombie(health, strength, speed)
 *Creates a strong zombie.*
 
-Use the `call` method on the Zombie constructor.
-Set StrongZombie's prototype to a new instance of Zombie.
+The StrongZombie class will extend the Zombie class.
 
 **Parameters**
 `health`: number, The zombie's health.
@@ -257,7 +255,7 @@ Set StrongZombie's prototype to a new instance of Zombie.
 `speed`: number, The zombie's speed.
 
 #### StrongZombie Extends Zombie Class
-The StrongZombie class will extend the Zombie class prototype
+The StrongZombie class will extend the Zombie class.
 
 
 
@@ -267,7 +265,8 @@ The StrongZombie class will extend the Zombie class prototype
 *Creates a ranged zombie.*
 
 Use the `call` method on the Zombie constructor.
-Set RangedZombie's prototype to a new instance of Zombie.
+
+The RangedZombie class will extend the Zombie class.
 
 **Parameters**
 `health`: number, The zombie's health.
@@ -275,7 +274,7 @@ Set RangedZombie's prototype to a new instance of Zombie.
 `speed`: number, The zombie's speed.
 
 #### RangedZombie Extends Zombie Class
-The RangedZombie class will extend the Zombie class prototype
+The RangedZombie class will extend the Zombie class.
 
 
 
@@ -285,7 +284,8 @@ The RangedZombie class will extend the Zombie class prototype
 *Creates an exploding zombie.*
 
 Use the `call` method on the Zombie constructor.
-Set ExplodingZombie's prototype to a new instance of Zombie.
+
+The ExplodingZombie class will extend the Zombie class.
 
 **Parameters**
 `health`: number, The zombie's health.
@@ -293,4 +293,4 @@ Set ExplodingZombie's prototype to a new instance of Zombie.
 `speed`: number, The zombie's speed.
 
 #### ExplodingZombie Extends Zombie Class
-The ExplodingZombie class will extend the Zombie class prototype
+The ExplodingZombie class will extend the Zombie class.
