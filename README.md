@@ -264,8 +264,6 @@ The StrongZombie class will extend the Zombie class.
 ## RangedZombie(health, strength, speed)
 *Creates a ranged zombie.*
 
-Use the `call` method on the Zombie constructor.
-
 The RangedZombie class will extend the Zombie class.
 
 **Parameters**
@@ -282,8 +280,6 @@ The RangedZombie class will extend the Zombie class.
 
 ## ExplodingZombie(health, strength, speed)
 *Creates an exploding zombie.*
-
-Use the `call` method on the Zombie constructor.
 
 The ExplodingZombie class will extend the Zombie class.
 
