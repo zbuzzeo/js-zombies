@@ -103,15 +103,6 @@ Returns private variable `maxHealth`.
 
 ----
 
-### checkPack()
-*Player checks the contents of their pack.*
-
-Nicely format and print the items in the player's pack.
-To access the pack, be sure to use Player's `getPack` method.
-You should be able to invoke this function on a Player instance.
-
-----
-
 ### takeItem(item)
 *Player takes an item from the world and places it into their pack.*
 
@@ -149,6 +140,15 @@ You should be able to invoke this function on a Player instance.
 `item`: Item/Weapon/Food, The item to discard.
 
 **Returns**: boolean, Whether player was able to remove item from pack.
+
+----
+
+### checkPack()
+*Player checks the contents of their pack.*
+
+Nicely format and print the items in the player's pack.
+To access the pack, be sure to use Player's `getPack` method.
+You should be able to invoke this function on a Player instance.
 
 ----
 
