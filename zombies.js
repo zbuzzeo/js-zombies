@@ -29,7 +29,8 @@ function Item(name) {
  */
 
 function Weapon(name, damage) {
-  const name = item.call(this, name);
+  const weaponName = Item.call(this, name);
+  weaponName;
   this.damage = damage;
 }
 
@@ -57,13 +58,18 @@ Weapon.prototype = Object.create(Item.prototype);
  * @property {number} energy
  */
 
+function Food(name, energy) {
+  const foodName = Item.call(this, name);
+  foodName;
+  this.energy = energy;
+}
 
 /**
  * Food Extends Item Class
  * -----------------------------
  */
 
-
+Food.prototype = Object.create(Item.prototype);
 
 /**
  * Class => Player(name, health, strength, speed)
