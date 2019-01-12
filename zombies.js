@@ -96,8 +96,8 @@ class Food extends Item {
 class Player {
   constructor(name, health, strength, speed) {
     this._pack = [];
-    this._maxHealth = health;
     this.name = name;
+    this._maxHealth = health;
     this.health = health;
     this.strength = strength;
     this.speed = speed;
@@ -291,7 +291,7 @@ class Player {
  * -----------------------------
  * Player checks their equipment.
  *
- * Prints the player's name and equipped weapon's name.
+ * Return the player's name and equipped weapon's name.
  * If nothing is equipped, prints a message saying so.
  * Also returns the equipped weapon's name or false if nothing is equipped.
  * You should be able to invoke this function on a Player instance.
@@ -325,6 +325,23 @@ class Player {
  * @property {boolean} isAlive      Default value should be `true`.
  */
 
+/** 
+ * class Item {
+     constructor(name) {
+       this.name = name;
+     }
+   }
+ */
+
+class Zombie {
+  constructor(health, strength, speed) {
+    this._maxHealth = health;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+  }
+}
 
 /**
  * Class => FastZombie(health, strength, speed)
@@ -347,7 +364,14 @@ class Player {
  * -----------------------------
  */
 
-
+class FastZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(Zombie);
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+  }
+}
 
 /**
  * Class => StrongZombie(health, strength, speed)
@@ -370,7 +394,14 @@ class Player {
  * -----------------------------
  */
 
-
+class StrongZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(Zombie);
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+  }
+}
 
 /**
  * Class => RangedZombie(health, strength, speed)
@@ -393,7 +424,14 @@ class Player {
  * -----------------------------
  */
 
-
+class RangedZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(Zombie);
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+  }
+}
 
 /**
  * Class => ExplodingZombie(health, strength, speed)
@@ -416,8 +454,14 @@ class Player {
  * -----------------------------
  */
 
-
-
+class ExplodingZombie extends Zombie {
+  constructor(health, strength, speed) {
+    super(Zombie);
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+  }
+}
 
 /**
  * Sample run.
