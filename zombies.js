@@ -126,8 +126,9 @@ class Player {
  */
 
   checkPack() {
+    const pack = this.getPack();
     console.log(`%cPlayer ${this.name}'s pack contains:`, 'color: mediumblue;');
-    this._pack.forEach(item => {
+    pack.forEach(item => {
       console.log(`%c${item.name}`, 'color: mediumblue; font-size: 0.9em;');
     });
   }
@@ -151,12 +152,13 @@ class Player {
  */
 
   takeItem(item) {
-    if (this._pack.length >= 3) {
+    const pack = this.getPack();
+    if (pack.length > 2) {
       console.log(`Player ${this.name}'s pack is full!`);
       return false;
     }
 
-    this._pack.push(item);
+    pack.push(item);
     console.log(`Player ${this.name} stored Item ${item.name}!`);
     return true;
   }
@@ -188,12 +190,13 @@ class Player {
  */
 
   discardItem(item) {
-    if (this._pack.indexOf(item) === -1) {
+    const pack = this.getPack();
+    if (pack.indexOf(item) === -1) {
       console.log(`%cPlayer ${this.name} does not have item ${item.name}`, 'color: orange; font-weight: bold;');
       return false;
     }
 
-    this._pack.splice(this._pack.indexOf(item), 1);
+    pack.splice(pack.indexOf(item), 1);
     console.log(`%cPlayer ${this.name} discarded ${item.name}!`, 'color: green;');
     return true;
   }
@@ -219,18 +222,19 @@ class Player {
  */
 
   equip(itemToEquip) {
-    if (!(itemToEquip instanceof Weapon) || !this._pack.includes(itemToEquip)) {
+    const pack = this.getPack();
+    if (!(itemToEquip instanceof Weapon) || !pack.includes(itemToEquip)) {
       return;
     }
     
     // if this.equipped is already assigned to an item
     if (this.equipped) {
       // deletes the current item at index itemToEquip and inserts this.equipped in its place
-      this._pack.splice(this._pack.indexOf(itemToEquip), 1, this.equipped);
+      pack.splice(pack.indexOf(itemToEquip), 1, this.equipped);
       this.equipped = itemToEquip;
     } else {
       this.equipped = itemToEquip;
-      this._pack.splice(this._pack.indexOf(itemToEquip), 1);
+      pack.splice(pack.indexOf(itemToEquip), 1);
     }
   }
 
@@ -254,11 +258,12 @@ class Player {
  */
 
   eat(itemToEat) {
-    if (!(itemToEat instanceof Food) || !this._pack.includes(itemToEat)) {
+    const pack = this.getPack();
+    if (!(itemToEat instanceof Food) || !pack.includes(itemToEat)) {
       return;
     }
 
-    this._pack.splice(this._pack.indexOf(itemToEat));
+    pack.splice(pack.indexOf(itemToEat), 1);
     if (this.health + itemToEat.energy > this._maxHealth) {
       this.health = this._maxHealth;
     } else {
@@ -304,8 +309,10 @@ class Player {
 
   equippedWith() {
     if (this.equipped) {
+      console.log(`Player ${this.name} has item ${this.equipped.name} equipped.`);
       return this.equipped.name;
     } else {
+      console.log(`Nothing is equipped on Player ${this.name}`);
       return false;
     }
   }
@@ -369,9 +376,6 @@ class Zombie {
 class FastZombie extends Zombie {
   constructor(health, strength, speed) {
     super(health, strength, speed);
-    this.health = health;
-    this.strength = strength;
-    this.speed = speed;
   }
 }
 
@@ -399,9 +403,6 @@ class FastZombie extends Zombie {
 class StrongZombie extends Zombie {
   constructor(health, strength, speed) {
     super(health, strength, speed);
-    this.health = health;
-    this.strength = strength;
-    this.speed = speed;
   }
 }
 
@@ -429,9 +430,6 @@ class StrongZombie extends Zombie {
 class RangedZombie extends Zombie {
   constructor(health, strength, speed) {
     super(health, strength, speed);
-    this.health = health;
-    this.strength = strength;
-    this.speed = speed;
   }
 }
 
@@ -459,9 +457,6 @@ class RangedZombie extends Zombie {
 class ExplodingZombie extends Zombie {
   constructor(health, strength, speed) {
     super(health, strength, speed);
-    this.health = health;
-    this.strength = strength;
-    this.speed = speed;
   }
 }
 
