@@ -126,8 +126,10 @@ class Player {
  */
 
   checkPack() {
-    console.log(`Player ${this.name}'s pack contains:\n
-    ${this._pack.join('\n')}`);
+    console.log(`%cPlayer ${this.name}'s pack contains:`, 'color: mediumblue;');
+    this._pack.forEach(item => {
+      console.log(`%c${item.name}`, 'color: mediumblue; font-size: 0.9em;');
+    });
   }
 
 /**
@@ -155,7 +157,7 @@ class Player {
     }
 
     this._pack.push(item);
-    console.log(`Player ${this.name} stored Item ${item}!`);
+    console.log(`Player ${this.name} stored Item ${item.name}!`);
     return true;
   }
 
@@ -187,12 +189,12 @@ class Player {
 
   discardItem(item) {
     if (this._pack.indexOf(item) === -1) {
-      console.log(`%cPlayer ${this.name} does not have item ${item}`, 'color: orange; font-weight: bold;');
+      console.log(`%cPlayer ${this.name} does not have item ${item.name}`, 'color: orange; font-weight: bold;');
       return false;
     }
 
     this._pack.splice(this._pack.indexOf(item), 1);
-    console.log(`%cPlayer ${this.name} discarded ${item}!`, 'color: green;');
+    console.log(`%cPlayer ${this.name} discarded ${item.name}!`, 'color: green;');
     return true;
   }
 
@@ -468,38 +470,38 @@ class ExplodingZombie extends Zombie {
  * Feel free to edit this and check your game logic.
  */
 function runGame() {
-  // var player = new Player("Joan", 500, 30, 70);
-  // var zombie = new Zombie(40, 50, 20);
-  // var charger = new FastZombie(175, 25, 60);
-  // var tank = new StrongZombie(250, 100, 15);
-  // var spitter = new RangedZombie(150, 20, 20);
-  // var boomer = new ExplodingZombie(50, 15, 10);
+  var player = new Player("Joan", 500, 30, 70);
+  var zombie = new Zombie(40, 50, 20);
+  var charger = new FastZombie(175, 25, 60);
+  var tank = new StrongZombie(250, 100, 15);
+  var spitter = new RangedZombie(150, 20, 20);
+  var boomer = new ExplodingZombie(50, 15, 10);
 
-  // var shovel = new Weapon("shovel", 15);
-  // var sandwich = new Food("sandwich", 30);
-  // var chainsaw = new Weapon("chainsaw", 25);
+  var shovel = new Weapon("shovel", 15);
+  var sandwich = new Food("sandwich", 30);
+  var chainsaw = new Weapon("chainsaw", 25);
 
-  // player.takeItem(shovel);
-  // player.takeItem(sandwich);
-  // player.takeItem(chainsaw);
-  // player.discardItem(new Weapon("scythe", 21));
-  // player.discardItem(shovel);
-  // player.checkPack();
-  // player.takeItem(shovel);
-  // player.checkPack();
+  player.takeItem(shovel);
+  player.takeItem(sandwich);
+  player.takeItem(chainsaw);
+  player.discardItem(new Weapon("scythe", 21));
+  player.discardItem(shovel);
+  player.checkPack();
+  player.takeItem(shovel);
+  player.checkPack();
 
-  // player.equippedWith();
-  // player.useItem(chainsaw);
-  // player.equippedWith();
-  // player.checkPack();
+  player.equippedWith();
+  player.useItem(chainsaw);
+  player.equippedWith();
+  player.checkPack();
 
-  // player.useItem(shovel);
-  // player.equippedWith();
-  // player.checkPack();
+  player.useItem(shovel);
+  player.equippedWith();
+  player.checkPack();
 
-  // player.health = 487;
-  // console.log("Before health: " + player.health);
-  // player.useItem(sandwich);
-  // console.log("After health: " + player.health);
-  // player.checkPack();
+  player.health = 487;
+  console.log("Before health: " + player.health);
+  player.useItem(sandwich);
+  console.log("After health: " + player.health);
+  player.checkPack();
 }
