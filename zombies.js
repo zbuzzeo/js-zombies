@@ -28,13 +28,18 @@ function Item(name) {
  * @property {number} damage
  */
 
+function Weapon(name, damage) {
+  const name = item.call(this, name);
+  this.damage = damage;
+}
+
 
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
 
-
+Weapon.prototype = Object.create(Item.prototype);
 
 /**
  * Class => Food(name, energy)
