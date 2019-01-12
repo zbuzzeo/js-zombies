@@ -8,6 +8,11 @@
  * @property {string} name
  */
 
+class Item {
+  constructor(name) {
+    this.name = name;
+  }
+}
 
 /**
  * Class => Weapon(name, damage)
@@ -25,13 +30,17 @@
  * @property {number} damage
  */
 
-
 /**
  * Weapon Extends Item Class
  * -----------------------------
  */
 
-
+class Weapon extends Item {
+  constructor(name, damage) {
+    super(name);
+    this.damage = damage;
+  }
+}
 
 /**
  * Class => Food(name, energy)
@@ -55,7 +64,12 @@
  * -----------------------------
  */
 
-
+class Food extends Item {
+  constructor(name, energy) {
+    super(name);
+    this.energy = energy;
+  }
+}
 
 /**
  * Class => Player(name, health, strength, speed)
@@ -79,6 +93,25 @@
  * @property {method} getMaxHealth         Returns private variable `maxHealth`.
  */
 
+class Player {
+  constructor(name, health, strength, speed) {
+    this._pack = [];
+    this._maxHealth = health;
+    this.name = name;
+    this.health = health;
+    this.strength = strength;
+    this.speed = speed;
+    this.isAlive = true;
+    this.equipped = false;
+  }
+
+  getPack() {
+    return this._pack;
+  }
+
+  getMaxHealth() {
+    return this._maxHealth;
+  }
 
 /**
  * Player Class Method => checkPack()
@@ -92,6 +125,10 @@
  * @name checkPack
  */
 
+  checkPack() {
+    console.log(`Player ${this.name}'s pack contains:\n
+    ${this._pack.join('\n')}`);
+  }
 
 /**
  * Player Class Method => takeItem(item)
@@ -111,6 +148,16 @@
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+  takeItem(item) {
+    if (this._pack.length >= 3) {
+      console.log(`Player ${this.name}'s pack is full!`);
+      return false;
+    }
+
+    this._pack.push(item);
+    console.log(`Player ${this.name} stored Item ${item}!`);
+    return true;
+  }
 
 /**
  * Player Class Method => discardItem(item)
@@ -138,6 +185,16 @@
  * @return {boolean} true/false     Whether player was able to remove item from pack.
  */
 
+  discardItem(item) {
+    if (this._pack.indexOf(item) === -1) {
+      console.log(`%cPlayer ${this.name} does not have item ${item}`, 'color: orange; font-weight: bold;');
+      return false;
+    }
+
+    this._pack.splice(this._pack.indexOf(item), 1);
+    console.log(`%cPlayer ${this.name} discarded ${item}!`, 'color: green;');
+    return true;
+  }
 
 /**
  * Player Class Method => equip(itemToEquip)
@@ -159,6 +216,21 @@
  * @param {Weapon} itemToEquip  The weapon item to equip.
  */
 
+  equip(itemToEquip) {
+    if (!(itemToEquip instanceof Weapon) || !this._pack.includes(itemToEquip)) {
+      return;
+    }
+    
+    // if this.equipped is already assigned to an item
+    if (this.equipped) {
+      // deletes the current item at index itemToEquip and inserts this.equipped in its place
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1, this.equipped);
+      this.equipped = itemToEquip;
+    } else {
+      this.equipped = itemToEquip;
+      this._pack.splice(this._pack.indexOf(itemToEquip), 1);
+    }
+  }
 
 /**
  * Player Class Method => eat(itemToEat)
@@ -179,6 +251,18 @@
  * @param {Food} itemToEat  The food item to eat.
  */
 
+  eat(itemToEat) {
+    if (!(itemToEat instanceof Food) || !this._pack.includes(itemToEat)) {
+      return;
+    }
+
+    this._pack.splice(this._pack.indexOf(itemToEat));
+    if (this.health + itemToEat.energy > this._maxHealth) {
+      this.health = this._maxHealth;
+    } else {
+      this.health += itemToEat.energy;
+    }
+  }
 
 /**
  * Player Class Method => useItem(item)
@@ -193,6 +277,14 @@
  * @param {Item/Weapon/Food} item   The item to use.
  */
 
+  useItem(item) {
+    if ((item instanceof Weapon)) {
+      this.equip(item);
+    }
+    if ((item instanceof Food)) {
+      this.eat(item);
+    }
+  }
 
 /**
  * Player Class Method => equippedWith()
@@ -208,6 +300,14 @@
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+  equippedWith() {
+    if (this.equipped) {
+      return this.equipped.name;
+    } else {
+      return false;
+    }
+  }
+}
 
 /**
  * Class => Zombie(health, strength, speed)
