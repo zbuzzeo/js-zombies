@@ -108,7 +108,7 @@ function Player(name, health, strength, speed) {
   this.getMaxHealth = function () {
     return maxHealth;
   }
-}
+
 
 /**
  * Player Class Method => checkPack()
@@ -122,6 +122,14 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
+  this.checkPack = function () {
+    const pack = this.getPack();
+    console.log(`%cContents of Player ${this.name}'s pack:`, 'color: darkblue; font-weight: bold;');
+    pack.forEach(function (item) {
+      console.log(`%c${item.name}`, 'color: darkblue; font-size: 0.9em;');
+    });
+    console.log('\n');
+  }
 
 /**
  * Player Class Method => takeItem(item)
@@ -141,6 +149,18 @@ function Player(name, health, strength, speed) {
  * @return {boolean} true/false     Whether player was able to store item in pack.
  */
 
+  this.takeItem = function (item) {
+    const pack = this.getPack();
+    if (pack.length > 2) {
+      console.log(`Player ${this.name}'s pack is full!`);
+      return false;
+    }
+
+    pack.push(item);
+    console.log(`Player ${this.name} stored item ${item.name}!`);
+    this.checkPack();
+    return true;
+  }
 
 /**
  * Player Class Method => discardItem(item)
@@ -238,6 +258,8 @@ function Player(name, health, strength, speed) {
  * @return {string/boolean}   Weapon name or false if nothing is equipped.
  */
 
+
+}
 
 /**
  * Class => Zombie(health, strength, speed)
