@@ -235,6 +235,7 @@ function Player(name, health, strength, speed) {
       pack.splice(pack.indexOf(itemToEquip), 1);
       this.equipped = itemToEquip;
     }
+
     return true;
   }
 
@@ -257,6 +258,21 @@ function Player(name, health, strength, speed) {
  * @param {Food} itemToEat  The food item to eat.
  */
 
+  this.eat = function (itemToEat) {
+    const pack = this.getPack();
+    const maxHealth = this.getMaxHealth();
+
+    if (!(itemToEat instanceof Food) || !pack.includes(itemToEat)) {
+      return;
+    }
+
+    pack.splice(pack.indexOf(itemToEat), 1);
+    if (this.health + itemToEat.energy > maxHealth) {
+      this.health = maxHealth;
+    } else {
+      this.health += itemToEat.energy;
+    }
+  }
 
 /**
  * Player Class Method => useItem(item)
