@@ -93,7 +93,21 @@ Food.prototype = Object.create(Item.prototype);
 
 function Player(name, health, strength, speed) {
   const pack = [];
-  
+  const maxHealth = health;
+  this.name = name;
+  this.health = health;
+  this.strength = strength;
+  this.speed = speed;
+  this.isAlive = true;
+  this.equipped = false;
+
+  this.getPack = function () {
+    return pack;
+  }
+
+  this.getMaxHealth = function () {
+    return maxHealth;
+  }
 }
 
 /**
