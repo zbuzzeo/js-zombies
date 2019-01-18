@@ -92,8 +92,8 @@ Food.prototype = Object.create(Item.prototype);
  */
 
 function Player(name, health, strength, speed) {
-  const pack = [];
-  const maxHealth = health;
+  const _pack = [];
+  const _maxHealth = health;
   this.name = name;
   this.health = health;
   this.strength = strength;
@@ -102,13 +102,13 @@ function Player(name, health, strength, speed) {
   this.equipped = false;
 
   this.getPack = function () {
-    return pack;
+    return _pack;
   }
 
   this.getMaxHealth = function () {
-    return maxHealth;
+    return _maxHealth;
   }
-
+}
 
 /**
  * Player Class Method => checkPack()
@@ -122,14 +122,24 @@ function Player(name, health, strength, speed) {
  * @name checkPack
  */
 
-  this.checkPack = function () {
-    const pack = this.getPack();
-    console.log(`%cContents of Player ${this.name}'s pack:`, 'color: darkblue; font-weight: bold;');
-    pack.forEach(function (item) {
-      console.log(`%c${item.name}`, 'color: darkblue; font-size: 0.9em;');
-    });
-    console.log('\n');
-  }
+Player.prototype.checkPack = function () {
+  const pack = this.getPack();
+  
+  console.log(`%cContents of Player ${this.name}'s pack:`, 'color: darkblue; font-weight: bold;');
+  pack.forEach(function (item) {
+    console.log(`%c${item.name}`, 'color: darkblue; font-size: 0.9em;');
+  });
+  console.log('\n');
+}
+
+  // this.checkPack = function () {
+  //   const pack = this.getPack();
+  //   console.log(`%cContents of Player ${this.name}'s pack:`, 'color: darkblue; font-weight: bold;');
+  //   pack.forEach(function (item) {
+  //     console.log(`%c${item.name}`, 'color: darkblue; font-size: 0.9em;');
+  //   });
+  //   console.log('\n');
+  // }
 
 /**
  * Player Class Method => takeItem(item)
@@ -318,7 +328,6 @@ function Player(name, health, strength, speed) {
       return false;
     }
   }
-}
 
 /**
  * Class => Zombie(health, strength, speed)
